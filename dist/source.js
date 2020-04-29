@@ -62,6 +62,7 @@ class first_store_FirstStore extends RootInitiator {
         this.callme = () => {
             debugger;
             // An error there will be at next line
+            // look into this.root.stores
             const secondStore = this.root.stores.secondStore;
             return secondStore.getHello();
         };
