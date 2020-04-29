@@ -31,6 +31,12 @@ class app_App extends react["Component"] {
 const app = Object(mobxreact_esm["b" /* inject */])('firstStore')(app_App)
 /* harmony default export */ var src_app = (app);
 // CONCATENATED MODULE: ./src/root.store.ts
+/**
+ * Root store connecting child stores for access to data between it.
+ * It is helpful in cases when  there is a need to get data from some dataStore
+ * filtered by paramteres from some parametersStore.
+ * It is a standart practice in Mobx https://mobx.js.org/best/store.html#combining-multiple-stores
+ */
 class RootStore {
     constructor() {
         this.stores = {};
@@ -43,7 +49,8 @@ const Root = new RootStore();
 class RootInitiator {
     constructor() {
         this.root = Root;
-        Root.setChildStore(this.constructor.name.toLowerCase(), this);
+        Root.setChildStore(this.constructor.name.charAt(0).toLowerCase() +
+            this.constructor.name.slice(1), this);
     }
 }
 
@@ -55,7 +62,7 @@ class first_store_FirstStore extends RootInitiator {
         this.callme = () => {
             debugger;
             // An error there will be at next line
-            const secondStore = this.root.stores.second;
+            const secondStore = this.root.stores.secondStore;
             return secondStore.getHello();
         };
     }

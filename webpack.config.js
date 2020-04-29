@@ -11,9 +11,9 @@ const config = (env, options) => {
             filename: `bundle.js`,
         },
         optimization: {
-            minimize: false,
             sideEffects: false,
-            namedModules: false,
+            minimize: false, // to fix the problem set
+            // concatenateModules: false, // both parameters to false
             splitChunks: {
                 chunks: 'all',
                 minSize: 300,

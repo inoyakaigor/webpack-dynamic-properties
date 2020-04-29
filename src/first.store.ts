@@ -8,7 +8,8 @@ class FirstStore extends RootInitiator {
     callme = () => {
         debugger
         // An error there will be at next line
-        const secondStore = this.root.stores.second
+        // look into this.root.stores
+        const secondStore = this.root.stores.secondStore
         return secondStore.getHello()
     }
 }
